@@ -1308,19 +1308,6 @@ function initParticles() {
                 particle.remove();
             }, 2000);
         }, 10);
-
-        // Subtle movement of gradient spheres
-        const spheres = document.querySelectorAll('.gradient-sphere');
-        const moveX = (e.clientX / window.innerWidth - 0.5) * 5;
-        const moveY = (e.clientY / window.innerHeight - 0.5) * 5;
-
-        spheres.forEach(sphere => {
-            // Note: We are not using the currentTransform to avoid complexity, 
-            // but this might override the CSS float animation. 
-            // For better results, we could use CSS variables or a wrapper.
-            // However, to strictly follow the requested code:
-            sphere.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
     });
 }
 
