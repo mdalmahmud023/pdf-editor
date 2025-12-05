@@ -6,14 +6,10 @@
     <title>Help - PDF Editor</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="images/logo_web.png">
     <style>
         .main-content {
             align-items: flex-start;
-        }
-        
-        .container {
-            background-color: #1f1f3a;
-            margin-bottom: 40px;
         }
         
         .page-header {
@@ -28,14 +24,16 @@
         
         /* Table of Contents Styling */
         .toc {
-            background-color: #272744;
+            background: var(--glass-bg);
+            border: 1px solid var(--color-border);
+            backdrop-filter: blur(5px);
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0 30px;
         }
         
         .toc h2 {
-            color: #00b4ab;
+            color: var(--color-primary);
             margin-bottom: 15px;
             font-size: 1.4rem;
         }
@@ -49,7 +47,7 @@
         }
         
         .toc-list a {
-            color: #e1e1e1;
+            color: var(--color-text-primary);
             text-decoration: none;
             display: block;
             padding: 8px 10px;
@@ -58,8 +56,8 @@
         }
         
         .toc-list a:hover {
-            background-color: rgba(0, 180, 171, 0.1);
-            color: #00b4ab;
+            background-color: rgba(0, 255, 136, 0.1);
+            color: var(--color-primary);
         }
         
         /* Help Section Styling */
@@ -69,15 +67,15 @@
         }
         
         .help-section h2 {
-            color: #00b4ab;
+            color: var(--color-primary);
             margin-bottom: 15px;
             font-size: 1.6rem;
-            border-bottom: 1px solid #333355;
+            border-bottom: 1px solid var(--color-border);
             padding-bottom: 10px;
         }
         
         .help-section h3 {
-            color: #e1e1e1;
+            color: var(--color-text-primary);
             margin: 25px 0 15px;
             font-size: 1.3rem;
         }
@@ -85,7 +83,7 @@
         .help-section p {
             margin-bottom: 15px;
             line-height: 1.7;
-            color: #e1e1e1;
+            color: var(--color-text-primary);
         }
         
         .step-list {
@@ -97,7 +95,7 @@
         .step-list li {
             position: relative;
             padding: 15px 0 15px 50px;
-            border-bottom: 1px solid #272744;
+            border-bottom: 1px solid var(--color-border);
         }
         
         .step-list li:last-child {
@@ -265,12 +263,15 @@
     </style>
 </head>
 <body>
+    <div id="particles-container"></div>
+    <div class="gradient-sphere sphere-1"></div>
+    <div class="gradient-sphere sphere-2"></div>
     <!-- Navbar -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">
-            📄 <span>PDF Editor</span>
+            <img src="images/logo_web.png" alt="PDF Editor Logo" class="navbar-logo"> <span>PDF Editor</span>
         </a>
-        <button class="navbar-toggle" id="navbarToggle">☰</button>
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">☰</button>
         <ul class="navbar-menu" id="navbarMenu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -518,15 +519,13 @@
     
     <a href="#" class="back-to-top" id="backToTop">↑</a>
 
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
     <script>
-        // Navbar Toggle Script
-        const navbarToggle = document.getElementById('navbarToggle');
-        const navbarMenu = document.getElementById('navbarMenu');
-        
-        navbarToggle.addEventListener('click', () => {
-            navbarMenu.classList.toggle('active');
-        });
-        
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+    </script>
+    <script src="js/app.js"></script>
+    <script>
         // Back to Top Button
         const backToTopBtn = document.getElementById('backToTop');
         
